@@ -82,3 +82,20 @@ class Empleado {
     private static int IdSiguiente = 1;
 
 }
+
+class Jefatura extends Empleado {
+    public Jefatura(String nom, double sue, int agno, int mes, int dia) {
+        super(nom, sue, agno, mes, dia);
+    }
+
+    public void estableceIncentivo(double b) { //SETTER
+        incentivo = b;
+    }
+
+    public double dameSueldo() { //GETTER
+        double sueldoJefe = super.dameSueldo();
+        return sueldoJefe + incentivo;
+    }
+
+    private double incentivo;
+}
