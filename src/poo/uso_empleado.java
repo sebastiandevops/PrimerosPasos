@@ -50,6 +50,8 @@ class Empleado {
         sueldo = sue;
         GregorianCalendar calendario = new GregorianCalendar(agno, mes - 1, dia);
         altaContrato = calendario.getTime();
+        Id = IdSiguiente;
+        IdSiguiente++;
     }
 
     public Empleado(String nom) {
@@ -57,7 +59,7 @@ class Empleado {
     }
 
     public String dameNombre() { //GETTER
-        return nombre;
+        return nombre + " Id: " + Id;
     }
 
     public double dameSueldo() { //GETTER
@@ -76,4 +78,7 @@ class Empleado {
     private String nombre;
     private double sueldo;
     private Date altaContrato;
+    private int Id;
+    private static int IdSiguiente = 1;
+
 }
