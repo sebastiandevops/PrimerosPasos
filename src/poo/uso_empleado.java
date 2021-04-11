@@ -16,12 +16,22 @@ public class uso_empleado {
         ". Sueldo: " + empleado2.dameSueldo() + ". Fecha de alta: " + empleado2.dameFechaContrato());
         System.out.println("Nombre: " + empleado3.dameNombre() +
         ". Sueldo: " + empleado3.dameSueldo() + ". Fecha de alta: " + empleado3.dameFechaContrato());*/
-        Empleado[] misEmpleados = new Empleado[4];
+
+        Jefatura jefe_RRHH = new Jefatura("Juan", 55000, 2006, 9, 25);
+        jefe_RRHH.estableceIncentivo(2570);
+
+        Empleado[] misEmpleados = new Empleado[6];
 
         misEmpleados[0] = new Empleado("Maicol Pérez", 85000, 1990, 12, 17);
         misEmpleados[1] = new Empleado("Bairon Suárez", 95000, 1995, 06, 02);
         misEmpleados[2] = new Empleado("Yeimi Sánchez", 105000, 2002, 03, 1);
         misEmpleados[3] = new Empleado("Coraima Moya");
+        misEmpleados[4] = jefe_RRHH;
+        misEmpleados[5] = new Jefatura("María Montoya", 95000, 1999, 5, 26);
+        /*
+         * Polimorfismo en acción, principio de sustitución.
+         * Se puede utilizar un objeto de la subclase siempre que el programa espere un objeto de la superclase
+         */
         /*for (int i = 0; i < misEmpleados.length; i++) {
             misEmpleados[i].subeSueldo(5);
         }*/
@@ -40,6 +50,10 @@ public class uso_empleado {
             System.out.println("Nombre: " + e.dameNombre()
             + ". Sueldo: " + e.dameSueldo()
             + ". Fecha de alta: " + e.dameFechaContrato());
+            /*
+             * En el índice 4 y 5, el bucle llama al método dameSueldo de la clase Jefatura. Esto es polimorfismo.
+             * El enlazado dinámico es la capácidad de la MV de java de llamar el método correspondiente según el objeto.
+             */
         }
     }
 }
