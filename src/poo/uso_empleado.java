@@ -97,5 +97,6 @@ class Jefatura extends Empleado {
         return sueldoJefe + incentivo;
     }
 
+    // declaración de variables
     private double incentivo;
 }
