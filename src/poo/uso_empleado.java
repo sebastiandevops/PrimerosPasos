@@ -28,6 +28,8 @@ public class uso_empleado {
         misEmpleados[3] = new Empleado("Coraima Moya");
         misEmpleados[4] = jefe_RRHH;
         misEmpleados[5] = new Jefatura("María Montoya", 95000, 1999, 5, 26);
+        Jefatura jefa_finanzas = (Jefatura) misEmpleados[5];
+        jefa_finanzas.estableceIncentivo(55000);
         /*
          * Polimorfismo en acción, principio de sustitución.
          * Se puede utilizar un objeto de la subclase siempre que el programa espere un objeto de la superclase
