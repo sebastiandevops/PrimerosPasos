@@ -30,6 +30,7 @@ public class uso_empleado {
         misEmpleados[5] = new Jefatura("María Montoya", 95000, 1999, 5, 26);
         Jefatura jefa_finanzas = (Jefatura) misEmpleados[5];
         jefa_finanzas.estableceIncentivo(55000);
+        System.out.println(jefa_finanzas.tomar_decisiones("Dar vacaciones a empleados"));
         /*
          * Polimorfismo en acción, principio de sustitución.
          * Se puede utilizar un objeto de la subclase siempre que el programa espere un objeto de la superclase
@@ -109,9 +110,14 @@ class Empleado implements Comparable {
 
 }
 
-class Jefatura extends Empleado {
+class Jefatura extends Empleado implements Jefes {
     public Jefatura(String nom, double sue, int agno, int mes, int dia) {
         super(nom, sue, agno, mes, dia);
+    }
+
+    public String tomar_decisiones(String decision) {
+        return "Un miembro de la dirección ha tomado la decisión de: "
+        + decision;
     }
 
     public void estableceIncentivo(double b) { //SETTER
