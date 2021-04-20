@@ -47,7 +47,7 @@ public class uso_empleado {
             + ". Sueldo: " + misEmpleados[i].dameSueldo()
             + ". Fecha de alta: " + misEmpleados[i].dameFechaContrato());
         }*/
-
+        Arrays.sort(misEmpleados);
         for (Empleado e: misEmpleados) {
             System.out.println("Nombre: " + e.dameNombre()
             + ". Sueldo: " + e.dameSueldo()
@@ -60,7 +60,7 @@ public class uso_empleado {
     }
 }
 
-class Empleado {
+class Empleado implements Comparable {
     public Empleado(String nom, double sue, int agno, int mes, int dia) {
         nombre = nom;
         sueldo = sue;
@@ -89,6 +89,16 @@ class Empleado {
     public void subeSueldo(double porcentaje) {//SETTER
         double aumento = sueldo * porcentaje / 100;
         sueldo += aumento;
+    }
+
+    public int compareTo(Object miObjeto) {
+        Empleado otroEmpleado = (Empleado) miObjeto;
+        if (this.Id < otroEmpleado.Id) {
+            return -1;
+        } if (this.Id > otroEmpleado.Id) {
+            return 1;
+        }
+        return 0;
     }
 
     private String nombre;
