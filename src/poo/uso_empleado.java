@@ -31,6 +31,10 @@ public class uso_empleado {
         Jefatura jefa_finanzas = (Jefatura) misEmpleados[5];
         jefa_finanzas.estableceIncentivo(55000);
         System.out.println(jefa_finanzas.tomar_decisiones("Dar vacaciones a empleados"));
+        System.out.println("El jefe " + jefa_finanzas.dameNombre() + " tiene un bonus de: " + 
+        jefa_finanzas.establece_bonus(500));
+        System.out.println(misEmpleados[3].dameNombre() + " tiene un bonus de: " + 
+        misEmpleados[3].establece_bonus(200));
         /*
          * Polimorfismo en acción, principio de sustitución.
          * Se puede utilizar un objeto de la subclase siempre que el programa espere un objeto de la superclase
@@ -55,13 +59,13 @@ public class uso_empleado {
             + ". Fecha de alta: " + e.dameFechaContrato());
             /*
              * En el índice 4 y 5, el bucle llama al método dameSueldo de la clase Jefatura. Esto es polimorfismo.
-             * El enlazado dinámico es la capácidad de la MV de java de llamar el método correspondiente según el objeto.
+             * El enlazado dinámico es la capacidad de la MV de java de llamar el método correspondiente según el objeto.
              */
         }
     }
 }
 
-class Empleado implements Comparable {
+class Empleado implements Comparable, Trabajadores {
     public Empleado(String nom, double sue, int agno, int mes, int dia) {
         nombre = nom;
         sueldo = sue;
@@ -69,6 +73,10 @@ class Empleado implements Comparable {
         altaContrato = calendario.getTime();
         Id = IdSiguiente;
         IdSiguiente++;
+    }
+    
+    public double establece_bonus(double gratificacion) {
+    	return Trabajadores.bonus_base + gratificacion;
     }
 
     public Empleado(String nom) {
@@ -118,6 +126,11 @@ class Jefatura extends Empleado implements Jefes {
     public String tomar_decisiones(String decision) {
         return "Un miembro de la dirección ha tomado la decisión de: "
         + decision;
+    }
+    
+    public double establece_bonus(double gratificacion) {
+    	double prima = 2000;
+    	return Trabajadores.bonus_base + gratificacion + prima;
     }
 
     public void estableceIncentivo(double b) { //SETTER
